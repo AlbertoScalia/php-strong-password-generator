@@ -19,7 +19,18 @@ Dare all’utente anche la possibilità di permettere o meno la ripetizione di c
 */
 
 
-include __DIR__ . '/helpers/functions.php'
+
+session_start();
+
+if (!empty($_GET['length'])) {
+    $_SESSION['length'] = $_GET['length'];
+}
+
+include __DIR__ . '/helpers/functions.php';
+
+if (!empty($password)) {
+    $_SESSION['password'] = $password;
+}
 
 ?>
 
@@ -35,21 +46,44 @@ include __DIR__ . '/helpers/functions.php'
 <body>
 
     <div class="container">
-        <h1 class="text-center">PHP Strong Password Generator</h1>
-        <h2 class="text-center">Genera una password sicura</h2>
+    <h1 class="text-center">PHP Strong Password Generator</h1>
+    <h2 class="text-center pb-5">Genera una password sicura</h2>
         <div class="card rounded-0 shadow">
             <div class="card-body p-5">
-                <form action="" method="get">
+                <form method="get">
                     <div class="mb-3 d-flex">
                         <label for="length" class="form-label w-50">Lunghezza password:</label>
-                        <input type="text" class="form-control w-50" id="length" name="length">
+                        <input type="number" class="form-control w-50" id="length" name="length" min="1" max="25">
                     </div>
+
+                    <div class="mb-3">
+
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Lettere
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Numeri
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Simboli
+                            </label>
+                        </div>
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Invia</button>
                     <button type="reset" class="btn btn-light">Annulla</button>
                 </form>
-                <?php if(!empty($_GET['length'])) : ?>
-                <p class="pt-4">La tua password è <?= $password ?></p>
-                <?php endif ?>
             </div>
         </div>
     </div>
