@@ -3,8 +3,6 @@
 session_start();
 
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -19,8 +17,8 @@ session_start();
 <body>
 
     <div class="container">
-        <h1 class="text-center">PHP Strong Password Generator</h1>
-        <h2 class="text-center pb-5">Genera una password sicura</h2>
+    <h1 class="text-center">PHP Strong Password Generator</h1>
+    <h2 class="text-center pb-5">Genera una password sicura</h2>
         <div class="card rounded-0 shadow">
             <div class="card-body p-5">
 
